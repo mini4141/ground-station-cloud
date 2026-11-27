@@ -93,6 +93,9 @@ func OpenDB(ctx context.Context, url string) (*pgxpool.Pool, error) {
 		}
 		time.Sleep(2 * time.Second)
 	}
+	if os.Getenv("RUN_MIGRATIONS") == "false" { // only the API Lambda migrates; avoids a cold-start race
+		return pool, nil
+	}
 	goose.SetBaseFS(db.Migrations)
 	if err := goose.SetDialect("postgres"); err != nil {
 		return nil, err

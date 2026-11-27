@@ -34,6 +34,11 @@ jobs:
           git diff --exit-code -- internal/api internal/db/sqlc web/console/src/api || (echo "generated code is stale: run scripts/gen.sh"; exit 1)
       - name: Build
         run: go build ./... && (cd web/console && pnpm build)
+      - name: Terraform fmt and validate (AWS infra)
+        run: |
+          terraform -chdir=infra fmt -check -recursive
+          terraform -chdir=infra/aws init -backend=false -input=false
+          terraform -chdir=infra/aws validate
       - name: Helm lint
         run: helm lint deploy/helm/gs-cloud
       - name: Playwright browser

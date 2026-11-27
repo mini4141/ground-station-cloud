@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
@@ -35,7 +36,9 @@ func NewS3(ctx context.Context, bucket string) (*S3, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &S3{Bucket: bucket, pre: s3.NewPresignClient(s3.NewFromConfig(cfg))}, nil
+	// the default CRC32 request checksum would be baked into the presigned URL and break plain PUTs from the agent
+	c := s3.NewFromConfig(cfg, func(o *s3.Options) { o.RequestChecksumCalculation = aws.RequestChecksumCalculationWhenRequired })
+	return &S3{Bucket: bucket, pre: s3.NewPresignClient(c)}, nil
 }
 
 // PresignPut implements Storage.
