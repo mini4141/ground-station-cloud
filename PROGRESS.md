@@ -3,8 +3,8 @@
 Resume point: read this file first; continue at the first unticked item.
 
 ## Phases
-- [ ] Phase 0: scaffold
-- [ ] Phase 1: local build, tests green, CI green, proof index complete
+- [x] Phase 0: scaffold
+- [x] Phase 1: local build, tests green, CI green, proof index complete
 - [ ] Phase 2: AWS showcase + proof
 - [ ] Phase 3: destroy + verify-destroyed proof
 - [ ] Phase 4: docs/PORTFOLIO.md + README final
@@ -25,18 +25,18 @@ Resume point: read this file first; continue at the first unticked item.
 - [ ] Dev env: oapi-codegen, sqlc, Lambda images, IoT mTLS, SQS bus, Aurora/PG, DynamoDB, S3, Cognito, CloudFront, EventBridge, custom TF provider, Prometheus, OpenTelemetry
 
 ## Features (SPECS §5)
-- [ ] F1 stations + Terraform provider
-- [ ] F2 satellites + pass prediction
-- [ ] F3 booking + scheduling
-- [ ] F4 edge agent pass execution
-- [ ] F5 telemetry ingest + live console
-- [ ] F6 SLA + billing
+- [x] F1 stations + Terraform provider
+- [x] F2 satellites + pass prediction
+- [x] F3 booking + scheduling
+- [x] F4 edge agent pass execution
+- [x] F5 telemetry ingest + live console
+- [x] F6 SLA + billing
 - [ ] F7 operator auth
 
 ## Phase 1 proof (SPECS §9)
-- [ ] tests/: go unit/integration JUnit, provider acceptance log, agent e2e log, Playwright report, k6 summary
-- [ ] screenshots 01-stations-map, 02-passes-timeline, 03-booking, 04-live-telemetry, 05-sla, 06-billing, 07-jaeger-trace
-- [ ] logs: terraform-provider-apply.log, mqtt-sub-all.log, agent-pass-tokyo.log, kind-get-all.txt
+- [x] tests/: go unit/integration JUnit, provider acceptance log, agent e2e log, Playwright report, k6 summary
+- [x] screenshots 01-stations-map, 02-passes-timeline, 03-booking, 04-live-telemetry, 05-sla, 06-billing, 07-jaeger-trace
+- [x] logs: terraform-provider-apply.log, mqtt-sub-all.log, agent-pass-tokyo.log, kind-get-all.txt
 
 ## Phase 2 proof (SPECS §10)
 - [ ] screenshots 01-cf-passes, 02-cf-live-telemetry, 03-cf-sla, 04-cf-billing
