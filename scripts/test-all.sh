@@ -30,12 +30,12 @@ TF_ACC=1 GROUNDSTATION_ENDPOINT=http://localhost:8080 GROUNDSTATION_TOKEN="$TOKE
   go tool gotestsum --junitfile "$OUT/provider-acceptance.xml" --format standard-verbose -- -count=1 ./provider/ 2>&1 | tee "$OUT/provider-acceptance.log"
 
 echo "== Agent e2e (simulated pass: rotator, modem, MQTT telemetry, mission file)"
-E2E_MQTT_LOG="$OUT/agent-e2e-mqtt-messages.log" UPLOAD_DIR="$ROOT/.local/uploads" MQTT_CA="$ROOT/.local/certs/ca.crt" MQTT_CERT="$ROOT/.local/certs/cloud.crt" MQTT_KEY="$ROOT/.local/certs/cloud.key" \
+E2E_MQTT_LOG="$(wp "$OUT")/agent-e2e-mqtt-messages.log" UPLOAD_DIR=../.local/uploads MQTT_CA=../.local/certs/ca.crt MQTT_CERT=../.local/certs/cloud.crt MQTT_KEY=../.local/certs/cloud.key \
   go tool gotestsum --junitfile "$OUT/agent-e2e.xml" --format standard-verbose -- -tags e2e -count=1 -timeout 5m ./e2e/ 2>&1 | tee "$OUT/agent-e2e.log"
 
 echo "== Playwright (book a pass -> live telemetry -> SLA + billing)"
 (cd web/console && pnpm install --frozen-lockfile >/dev/null && pnpm lint && pnpm exec playwright install chromium >/dev/null 2>&1 || true)
-(cd web/console && SHOT_DIR="$SHOTS" PW_REPORT="$OUT/playwright-report" PW_JUNIT="$OUT/playwright-junit.xml" pnpm exec playwright test 2>&1 | tee "$OUT/playwright.log")
+(cd web/console && SHOT_DIR="$(wp "$SHOTS")" PW_REPORT="$(wp "$OUT")/playwright-report" PW_JUNIT="$(wp "$OUT")/playwright-junit.xml" pnpm exec playwright test 2>&1 | tee "$OUT/playwright.log")
 
 echo "== k6 smoke: GET /passes 20 rps for 30 s, p95 < 500 ms"
 SAT=$(curl -fsS -H "Authorization: Bearer $TOKEN" http://localhost:8080/satellites | sed -E 's/.*"id":"([^"]+)","name":"ISS.*/\1/')

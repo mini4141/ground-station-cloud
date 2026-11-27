@@ -1,0 +1,12 @@
+
+Running 2 tests using 1 worker
+
+  ok 1 e2e\console.spec.ts:19:1 › book a pass, watch live telemetry, SLA and billing update (34.8s)
+  ok 2 e2e\jaeger.spec.ts:7:1 › jaeger shows an API trace (2.6s)
+
+  2 passed (40.5s)
+
+To open last HTML report run:
+[36m[39m
+[36m  pnpm exec playwright show-report ..\..\proof\phase1-local\tests\playwright-report[39m
+[36m[39m

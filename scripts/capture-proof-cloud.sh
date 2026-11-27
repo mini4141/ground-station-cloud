@@ -23,8 +23,8 @@ GROUP=$(tfo schedule_group); MISSION=$(tfo mission_bucket); TABLE=$(tfo live_tab
 POLL=$!
 
 echo "== Playwright against CloudFront: book -> live telemetry -> SLA + billing"
-(cd web/console && PHASE=cloud BASE_URL="$CONSOLE_URL" API_URL="$API_URL" TOKEN="$TOKEN" SHOT_DIR="$ROOT/$P/screenshots" \
-  PW_REPORT="$ROOT/$P/tests/playwright-report" PW_JUNIT="$ROOT/$P/tests/playwright-junit.xml" pnpm exec playwright test console.spec.ts 2>&1 | tee "$ROOT/$P/tests/playwright.log")
+(cd web/console && PHASE=cloud BASE_URL="$CONSOLE_URL" API_URL="$API_URL" TOKEN="$TOKEN" SHOT_DIR="$(wp "$ROOT/$P/screenshots")" \
+  PW_REPORT="$(wp "$ROOT/$P/tests")/playwright-report" PW_JUNIT="$(wp "$ROOT/$P/tests")/playwright-junit.xml" pnpm exec playwright test console.spec.ts 2>&1 | tee "$ROOT/$P/tests/playwright.log")
 PW=${PIPESTATUS[0]}
 wait $POLL 2>/dev/null
 sleep 5

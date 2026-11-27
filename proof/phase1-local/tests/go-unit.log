@@ -1,0 +1,29 @@
+EMPTY internal/api
+EMPTY internal/auth
+EMPTY internal/db
+EMPTY internal/db/sqlc
+EMPTY internal/events
+EMPTY internal/ingest
+EMPTY internal/iot
+EMPTY internal/live
+EMPTY internal/mqtt
+EMPTY internal/msg
+EMPTY internal/platform
+PASS internal/gs232.TestRoundTrip (0.00s)
+PASS internal/gs232
+PASS internal/modemproto.TestStatusRoundTrip (0.00s)
+PASS internal/modemproto
+EMPTY internal/server
+EMPTY internal/simclock
+EMPTY internal/storage
+EMPTY internal/wiring
+EMPTY edge/agent
+EMPTY edge/sim-modem
+EMPTY edge/sim-rotator
+PASS internal/orbit.TestPassesTokyoDeterministic (0.01s)
+PASS internal/orbit.TestValidateTLERejectsGarbage (0.00s)
+PASS internal/orbit
+PASS internal/schedule.TestConflicts (0.00s)
+PASS internal/schedule
+
+DONE 5 tests in 5.346s

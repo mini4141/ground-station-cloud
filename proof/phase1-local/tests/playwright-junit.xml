@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="40.464587">
+<testsuite name="console.spec.ts" timestamp="2026-11-27T23:35:53.353Z" hostname="" tests="1" failures="0" skipped="0" time="34.766" errors="0">
+<testcase name="book a pass, watch live telemetry, SLA and billing update" classname="console.spec.ts" time="34.766">
+</testcase>
+</testsuite>
+<testsuite name="jaeger.spec.ts" timestamp="2026-11-27T23:35:53.353Z" hostname="" tests="1" failures="0" skipped="0" time="2.571" errors="0">
+<testcase name="jaeger shows an API trace" classname="jaeger.spec.ts" time="2.571">
+</testcase>
+</testsuite>
+</testsuites>

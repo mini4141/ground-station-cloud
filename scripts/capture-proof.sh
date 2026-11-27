@@ -16,7 +16,7 @@ phase1)
     mosquitto_sub -h mosquitto -p 8883 --cafile /certs/ca.crt --cert /certs/cloud.crt --key /certs/cloud.key -i proof-sub -t 'gs/#' -v -F '%I %t %p' >/dev/null
   sleep 2
   START=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-  (cd web/console && SHOT_DIR="$ROOT/$P/screenshots" PW_REPORT="$ROOT/$P/tests/playwright-report" PW_JUNIT="$ROOT/$P/tests/playwright-junit.xml" pnpm exec playwright test)
+  (cd web/console && SHOT_DIR="$(wp "$ROOT/$P/screenshots")" PW_REPORT="$(wp "$ROOT/$P/tests")/playwright-report" PW_JUNIT="$(wp "$ROOT/$P/tests")/playwright-junit.xml" pnpm exec playwright test)
   sleep 2
   docker logs gs-mqtt-sub 2>&1 | scripts/redact.sh > $P/logs/mqtt-sub-all.log
   docker rm -f gs-mqtt-sub >/dev/null

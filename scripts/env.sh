@@ -29,3 +29,6 @@ wait_http() { # url, seconds
   for i in $(seq 1 "${2:-60}"); do curl -fsS -m 3 "$1" >/dev/null 2>&1 && return 0; sleep 1; done
   echo "timeout waiting for $1" >&2; return 1
 }
+
+# wp <dir>: path usable by native Windows programs (Go, Node, docker) when run from Git Bash; unchanged on Linux
+wp() { mkdir -p "$1"; (cd "$1" && (pwd -W 2>/dev/null || pwd)); }
