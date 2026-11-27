@@ -1,0 +1,302 @@
+openapi: 3.0.3
+info:
+  title: Ground Station Cloud API
+  version: 1.0.0
+  description: Contract for stations, satellites, pass prediction, bookings, live telemetry, SLA and billing.
+servers:
+  - url: http://localhost:8080
+security:
+  - bearerAuth: []
+paths:
+  /healthz:
+    get:
+      operationId: getHealth
+      security: []
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Health" }
+  /sim/clock:
+    get:
+      operationId: getSimClock
+      responses:
+        "200": { description: current simulated time, content: { application/json: { schema: { $ref: "#/components/schemas/SimClock" } } } }
+    put:
+      operationId: setSimClock
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: "#/components/schemas/SimClockInput" } } }
+      responses:
+        "200": { description: updated, content: { application/json: { schema: { $ref: "#/components/schemas/SimClock" } } } }
+  /stations:
+    get:
+      operationId: listStations
+      responses:
+        "200": { description: stations, content: { application/json: { schema: { type: array, items: { $ref: "#/components/schemas/Station" } } } } }
+    post:
+      operationId: createStation
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: "#/components/schemas/StationInput" } } }
+      responses:
+        "201": { description: created, content: { application/json: { schema: { $ref: "#/components/schemas/Station" } } } }
+        "409": { $ref: "#/components/responses/Error" }
+  /stations/{id}:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: string } }
+    get:
+      operationId: getStation
+      responses:
+        "200": { description: station, content: { application/json: { schema: { $ref: "#/components/schemas/Station" } } } }
+        "404": { $ref: "#/components/responses/Error" }
+    patch:
+      operationId: updateStation
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: "#/components/schemas/StationPatch" } } }
+      responses:
+        "200": { description: updated, content: { application/json: { schema: { $ref: "#/components/schemas/Station" } } } }
+        "404": { $ref: "#/components/responses/Error" }
+    delete:
+      operationId: deleteStation
+      responses:
+        "204": { description: deleted }
+        "404": { $ref: "#/components/responses/Error" }
+  /stations/{id}/live:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: string } }
+    get:
+      operationId: getStationLive
+      responses:
+        "200": { description: latest frame and heartbeat, content: { application/json: { schema: { $ref: "#/components/schemas/LiveState" } } } }
+        "404": { $ref: "#/components/responses/Error" }
+  /satellites:
+    get:
+      operationId: listSatellites
+      responses:
+        "200": { description: own satellites, content: { application/json: { schema: { type: array, items: { $ref: "#/components/schemas/Satellite" } } } } }
+    post:
+      operationId: createSatellite
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: "#/components/schemas/SatelliteInput" } } }
+      responses:
+        "201": { description: created, content: { application/json: { schema: { $ref: "#/components/schemas/Satellite" } } } }
+        "400": { $ref: "#/components/responses/Error" }
+  /passes:
+    get:
+      operationId: listPasses
+      parameters:
+        - { name: satellite, in: query, required: true, schema: { type: string } }
+        - { name: station, in: query, schema: { type: string } }
+        - { name: from, in: query, schema: { type: string, format: date-time } }
+        - { name: to, in: query, schema: { type: string, format: date-time } }
+      responses:
+        "200": { description: predicted passes, content: { application/json: { schema: { type: array, items: { $ref: "#/components/schemas/Pass" } } } } }
+        "404": { $ref: "#/components/responses/Error" }
+  /bookings:
+    get:
+      operationId: listBookings
+      responses:
+        "200": { description: own bookings, content: { application/json: { schema: { type: array, items: { $ref: "#/components/schemas/Booking" } } } } }
+    post:
+      operationId: createBooking
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: "#/components/schemas/BookingInput" } } }
+      responses:
+        "201": { description: booked, content: { application/json: { schema: { $ref: "#/components/schemas/Booking" } } } }
+        "404": { $ref: "#/components/responses/Error" }
+        "409": { $ref: "#/components/responses/Error" }
+  /bookings/{id}:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: string } }
+    get:
+      operationId: getBooking
+      responses:
+        "200": { description: booking, content: { application/json: { schema: { $ref: "#/components/schemas/Booking" } } } }
+        "404": { $ref: "#/components/responses/Error" }
+  /bookings/{id}/upload-url:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: string } }
+    post:
+      operationId: createUploadUrl
+      description: Called by the edge agent at LOS. Authorised by the HMAC upload token carried in the pass plan.
+      security: []
+      parameters:
+        - { name: X-Upload-Token, in: header, required: true, schema: { type: string } }
+      responses:
+        "200": { description: presigned PUT, content: { application/json: { schema: { $ref: "#/components/schemas/UploadURL" } } } }
+        "401": { $ref: "#/components/responses/Error" }
+        "404": { $ref: "#/components/responses/Error" }
+  /sla:
+    get:
+      operationId: getSla
+      responses:
+        "200": { description: SLA per station and per satellite, content: { application/json: { schema: { type: array, items: { $ref: "#/components/schemas/SlaRow" } } } } }
+  /billing:
+    get:
+      operationId: getBilling
+      responses:
+        "200": { description: usage per month and station, content: { application/json: { schema: { type: array, items: { $ref: "#/components/schemas/BillingRow" } } } } }
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+  responses:
+    Error:
+      description: error
+      content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } }
+  schemas:
+    Error:
+      type: object
+      required: [error]
+      properties: { error: { type: string } }
+    Health:
+      type: object
+      required: [status]
+      properties: { status: { type: string } }
+    SimClock:
+      type: object
+      required: [sim_time, scale]
+      properties:
+        sim_time: { type: string, format: date-time }
+        scale: { type: number, format: double }
+    SimClockInput:
+      type: object
+      required: [sim_time]
+      properties:
+        sim_time: { type: string, format: date-time }
+        scale: { type: number, format: double }
+    StationInput:
+      type: object
+      required: [name, latitude, longitude, band, rate_per_min_minor]
+      properties:
+        name: { type: string, description: "slug, also the MQTT topic key and IoT thing name" }
+        latitude: { type: number, format: double }
+        longitude: { type: number, format: double }
+        altitude_m: { type: number, format: double }
+        min_elevation_deg: { type: number, format: double }
+        band: { type: string }
+        rate_per_min_minor: { type: integer, format: int32 }
+    StationPatch:
+      type: object
+      properties:
+        latitude: { type: number, format: double }
+        longitude: { type: number, format: double }
+        altitude_m: { type: number, format: double }
+        min_elevation_deg: { type: number, format: double }
+        band: { type: string }
+        rate_per_min_minor: { type: integer, format: int32 }
+    Station:
+      allOf:
+        - $ref: "#/components/schemas/StationInput"
+        - type: object
+          required: [id]
+          properties: { id: { type: string } }
+    SatelliteInput:
+      type: object
+      required: [name, norad_id, tle1, tle2]
+      properties:
+        name: { type: string }
+        norad_id: { type: integer, format: int32 }
+        tle1: { type: string }
+        tle2: { type: string }
+    Satellite:
+      allOf:
+        - $ref: "#/components/schemas/SatelliteInput"
+        - type: object
+          required: [id, operator_id]
+          properties:
+            id: { type: string }
+            operator_id: { type: string }
+    TrackPoint:
+      type: object
+      required: [t, az, el]
+      properties:
+        t: { type: string, format: date-time }
+        az: { type: number, format: double }
+        el: { type: number, format: double }
+    Pass:
+      type: object
+      required: [id, satellite_id, station_id, station_name, aos, tca, los, max_elevation_deg, track]
+      properties:
+        id: { type: string }
+        satellite_id: { type: string }
+        station_id: { type: string }
+        station_name: { type: string }
+        aos: { type: string, format: date-time }
+        tca: { type: string, format: date-time }
+        los: { type: string, format: date-time }
+        max_elevation_deg: { type: number, format: double }
+        track: { type: array, items: { $ref: "#/components/schemas/TrackPoint" } }
+    BookingInput:
+      type: object
+      required: [pass_id]
+      properties: { pass_id: { type: string } }
+    Booking:
+      type: object
+      required: [id, pass_id, satellite_id, satellite_name, station_id, station_name, operator_id, status, aos, los]
+      properties:
+        id: { type: string }
+        pass_id: { type: string }
+        satellite_id: { type: string }
+        satellite_name: { type: string }
+        station_id: { type: string }
+        station_name: { type: string }
+        operator_id: { type: string }
+        status: { type: string, enum: [booked, dispatched, tracking, completed, failed] }
+        aos: { type: string, format: date-time }
+        los: { type: string, format: date-time }
+        plan_sent_at: { type: string, format: date-time }
+        aos_actual: { type: string, format: date-time }
+        los_actual: { type: string, format: date-time }
+        lock_ratio: { type: number, format: double }
+        bytes_delivered: { type: integer, format: int64 }
+    UploadURL:
+      type: object
+      required: [url, method, key]
+      properties:
+        url: { type: string }
+        method: { type: string }
+        key: { type: string }
+    LiveFrame:
+      type: object
+      required: [t, az, el, snr, lock, bitrate]
+      properties:
+        t: { type: string, format: date-time }
+        booking_id: { type: string }
+        az: { type: number, format: double }
+        el: { type: number, format: double }
+        snr: { type: number, format: double }
+        lock: { type: boolean }
+        bitrate: { type: integer, format: int32 }
+    LiveState:
+      type: object
+      required: [station]
+      properties:
+        station: { type: string }
+        state: { type: string, description: "idle, tracking or offline" }
+        heartbeat_at: { type: string, format: date-time }
+        frame: { $ref: "#/components/schemas/LiveFrame" }
+    SlaRow:
+      type: object
+      required: [scope, name, passes, successes, success_rate]
+      properties:
+        scope: { type: string, enum: [station, satellite] }
+        name: { type: string }
+        passes: { type: integer, format: int32 }
+        successes: { type: integer, format: int32 }
+        success_rate: { type: number, format: double }
+        ack_latency_p95_ms: { type: number, format: double }
+        delivery_delay_p95_ms: { type: number, format: double }
+    BillingRow:
+      type: object
+      required: [month, station, minutes, rate_per_min_minor, amount_minor]
+      properties:
+        month: { type: string }
+        station: { type: string }
+        minutes: { type: number, format: double }
+        rate_per_min_minor: { type: integer, format: int32 }
+        amount_minor: { type: integer, format: int64 }

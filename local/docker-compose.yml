@@ -1,0 +1,58 @@
+name: gs-local
+x-agent: &agent
+  build: { context: .., dockerfile: edge/Dockerfile }
+  image: gs-edge-agent:dev
+  depends_on: [mosquitto]
+  extra_hosts: ["host.docker.internal:host-gateway"]
+  restart: unless-stopped
+  environment: &agent-env
+    MQTT_URL: ssl://mosquitto:8883
+    MQTT_CA: /certs/ca.crt
+    MODEM_ADDR: localhost:7777
+    SIM_WORLD: /tmp/antenna.json
+    SLEW_DEG_PER_S: "60"
+services:
+  postgres:
+    image: postgres:17.6-alpine
+    environment: { POSTGRES_USER: gs, POSTGRES_PASSWORD: gs, POSTGRES_DB: gs }
+    ports: ["5432:5432"]
+    healthcheck: { test: ["CMD-SHELL", "pg_isready -U gs"], interval: 2s, timeout: 3s, retries: 30 }
+  mosquitto:
+    image: eclipse-mosquitto:2.0.21
+    ports: ["8883:8883"]
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mosquitto/acl:/mosquitto/config/acl:ro
+      - ../.local/certs/ca.crt:/mosquitto/certs/ca.crt:ro
+      - ../.local/certs/server.crt:/mosquitto/certs/server.crt:ro
+      - ../.local/certs/server.key:/mosquitto/certs/server.key:ro
+  elasticmq:
+    image: softwaremill/elasticmq-native:1.6.12
+    ports: ["9324:9324"]
+  dynamodb:
+    image: amazon/dynamodb-local:2.6.1
+    command: ["-jar", "DynamoDBLocal.jar", "-inMemory", "-sharedDb"]
+    ports: ["8000:8000"]
+  jaeger:
+    image: jaegertracing/jaeger:2.9.0
+    ports: ["16686:16686", "4318:4318"]
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    volumes: ["./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+    ports: ["9090:9090"]
+  agent-tokyo:
+    <<: *agent
+    profiles: [agents]
+    environment: { <<: *agent-env, STATION: tokyo, MQTT_CERT: /certs/tokyo.crt, MQTT_KEY: /certs/tokyo.key }
+    volumes: ["../.local/certs/ca.crt:/certs/ca.crt:ro", "../.local/certs/tokyo.crt:/certs/tokyo.crt:ro", "../.local/certs/tokyo.key:/certs/tokyo.key:ro"]
+  agent-svalbard:
+    <<: *agent
+    profiles: [agents]
+    environment: { <<: *agent-env, STATION: svalbard, MQTT_CERT: /certs/svalbard.crt, MQTT_KEY: /certs/svalbard.key }
+    volumes: ["../.local/certs/ca.crt:/certs/ca.crt:ro", "../.local/certs/svalbard.crt:/certs/svalbard.crt:ro", "../.local/certs/svalbard.key:/certs/svalbard.key:ro"]
+  agent-santiago:
+    <<: *agent
+    profiles: [agents]
+    environment: { <<: *agent-env, STATION: santiago, MQTT_CERT: /certs/santiago.crt, MQTT_KEY: /certs/santiago.key }
+    volumes: ["../.local/certs/ca.crt:/certs/ca.crt:ro", "../.local/certs/santiago.crt:/certs/santiago.crt:ro", "../.local/certs/santiago.key:/certs/santiago.key:ro"]

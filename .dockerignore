@@ -1,0 +1,9 @@
+.git
+.local
+node_modules
+web/console/node_modules
+web/console/dist
+proof
+docs
+infra
+**/.terraform

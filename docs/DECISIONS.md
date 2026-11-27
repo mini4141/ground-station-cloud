@@ -12,3 +12,4 @@ One line each: date, decision, reason.
 - 2026-11-28 One Go binary per service runs as Lambda when `AWS_LAMBDA_RUNTIME_API` is set, otherwise as HTTP server / poller (same handlers for kind and local).
 - 2026-11-28 Terraform station registrations live in `infra/stations/` (separate root module, reused for local API and AWS API) instead of a single `infra/stations.tf`, so it can target either endpoint.
 - 2026-11-28 Provider lives in the main Go module (`provider/`) so it can import the generated client from `internal/`.
+- 2026-11-28 go.mod directive is 1.26.0 (not 1.25): terraform-plugin-* and oapi-codegen releases require it; images use golang:1.26. Spec asks Go 1.25+, stack item unchanged.

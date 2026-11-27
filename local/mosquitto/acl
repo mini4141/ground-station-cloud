@@ -1,0 +1,9 @@
+# cloud services may do everything under gs/
+user cloud
+topic readwrite gs/#
+
+# every station certificate (CN = station name) is limited to its own topics
+pattern read gs/%u/cmd
+pattern write gs/%u/telemetry
+pattern write gs/%u/status
+pattern write gs/%u/events
