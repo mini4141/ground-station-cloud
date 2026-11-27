@@ -1,0 +1,25 @@
+name: gs-aws-agents
+# Edge agents on this PC connecting to AWS IoT Core with the per-station X.509 certificates in .local/certs/aws/.
+x-agent: &agent
+  build: { context: .., dockerfile: edge/Dockerfile }
+  image: gs-edge-agent:dev
+  restart: unless-stopped
+  environment: &agent-env
+    MQTT_URL: ssl://${IOT_ENDPOINT:?set IOT_ENDPOINT}:8883
+    MQTT_CA: /certs/ca.crt
+    MODEM_ADDR: localhost:7777
+    SIM_WORLD: /tmp/antenna.json
+    SLEW_DEG_PER_S: "60"
+services:
+  agent-tokyo:
+    <<: *agent
+    environment: { <<: *agent-env, STATION: tokyo, MQTT_CERT: /certs/tokyo.crt, MQTT_KEY: /certs/tokyo.key }
+    volumes: ["../.local/certs/aws/ca.crt:/certs/ca.crt:ro", "../.local/certs/aws/tokyo.crt:/certs/tokyo.crt:ro", "../.local/certs/aws/tokyo.key:/certs/tokyo.key:ro"]
+  agent-svalbard:
+    <<: *agent
+    environment: { <<: *agent-env, STATION: svalbard, MQTT_CERT: /certs/svalbard.crt, MQTT_KEY: /certs/svalbard.key }
+    volumes: ["../.local/certs/aws/ca.crt:/certs/ca.crt:ro", "../.local/certs/aws/svalbard.crt:/certs/svalbard.crt:ro", "../.local/certs/aws/svalbard.key:/certs/svalbard.key:ro"]
+  agent-santiago:
+    <<: *agent
+    environment: { <<: *agent-env, STATION: santiago, MQTT_CERT: /certs/santiago.crt, MQTT_KEY: /certs/santiago.key }
+    volumes: ["../.local/certs/aws/ca.crt:/certs/ca.crt:ro", "../.local/certs/aws/santiago.crt:/certs/santiago.crt:ro", "../.local/certs/aws/santiago.key:/certs/santiago.key:ro"]

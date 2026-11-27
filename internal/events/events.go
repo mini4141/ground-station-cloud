@@ -90,7 +90,7 @@ func (s *EventBridgeScheduler) Schedule(ctx context.Context, bookingID string, a
 		Name: aws.String("pass-" + bookingID), GroupName: aws.String(s.Group),
 		ScheduleExpression:    aws.String(fmt.Sprintf("at(%s)", at.UTC().Format("2006-01-02T15:04:05"))),
 		FlexibleTimeWindow:    &schtypes.FlexibleTimeWindow{Mode: schtypes.FlexibleTimeWindowModeOff},
-		ActionAfterCompletion: schtypes.ActionAfterCompletionDelete,
+		ActionAfterCompletion: schtypes.ActionAfterCompletionNone,
 		Target:                &schtypes.Target{Arn: &s.LambdaARN, RoleArn: &s.RoleARN, Input: aws.String(string(input))},
 	})
 	return err
