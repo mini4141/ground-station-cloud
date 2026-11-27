@@ -1,0 +1,11 @@
+{"time":"2026-11-28T05:59:19.4470536+07:00","level":"INFO","msg":"OK   00001_init.sql (41.19ms)","service":"api"}
+{"time":"2026-11-28T05:59:19.4481795+07:00","level":"INFO","msg":"goose: successfully migrated database to version: 1","service":"api"}
+{"time":"2026-11-28T05:59:19.5025089+07:00","level":"INFO","msg":"mqtt connected","service":"api","url":"ssl://localhost:8883","client":"cloud-api"}
+{"time":"2026-11-28T05:59:19.5025089+07:00","level":"INFO","msg":"dependencies ready","service":"api","publisher":"mqtt"}
+{"time":"2026-11-28T05:59:20.1666596+07:00","level":"INFO","msg":"api listening","service":"api","addr":":8080"}
+{"time":"2026-11-28T06:34:48.4342855+07:00","level":"INFO","msg":"domain event","service":"api","type":"BookingCreated","detail":{"booking_id":"3fa04ac6-4ebb-43a8-970c-83f63240e526","operator":"op-demo","pass_id":"bf735922-4634-4478-a298-634ddec4758d"}}
+{"time":"2026-11-28T06:35:58.603082+07:00","level":"INFO","msg":"domain event","service":"api","type":"BookingCreated","detail":{"booking_id":"ddd919f3-0c21-437f-9e29-bf033ce4bbf2","operator":"op-demo","pass_id":"706c29d2-0dfc-4894-bb8f-c0da94fd918d"}}
+{"time":"2026-11-28T06:37:25.6243568+07:00","level":"INFO","msg":"domain event","service":"api","type":"BookingCreated","detail":{"booking_id":"b806a5c3-d8a6-4685-a28d-924d6d70009b","operator":"op-demo","pass_id":"751b25e3-94c3-46f0-832b-44624ce79e57"}}
+{"time":"2026-11-28T06:39:19.810424+07:00","level":"INFO","msg":"domain event","service":"api","type":"BookingCreated","detail":{"booking_id":"0c9f5a06-e230-4a89-b86d-2c0bd0f0091f","operator":"op-demo","pass_id":"7b335781-a68e-4a2f-abda-e5efb7a0d1c9"}}
+{"time":"2026-11-28T06:40:12.8225913+07:00","level":"INFO","msg":"domain event","service":"api","type":"BookingCreated","detail":{"booking_id":"f61316d9-5976-4297-a705-c16549b6c619","operator":"op-demo","pass_id":"f28c109d-c9cc-4608-8bc2-4be72daf1e3b"}}
+{"time":"2026-11-28T06:41:31.0228828+07:00","level":"INFO","msg":"domain event","service":"api","type":"BookingCreated","detail":{"booking_id":"5fcce4da-4db9-46be-99d5-d6f04726cb37","operator":"op-demo","pass_id":"df5ec1e9-5dd4-4b2f-9779-7b190833b880"}}

@@ -1,8 +1,8 @@
 === RUN   TestSimulatedPassEndToEnd
-2026/11/28 06:34:48 INFO mqtt connected url=ssl://localhost:8883 client=e2e-observer
-    e2e_test.go:197: pass ok: 26 frames (26 locked), file ..\.local\uploads\mission\3fa04ac6-4ebb-43a8-970c-83f63240e526.bin, sla=2 rows, billing=8.7 min
---- PASS: TestSimulatedPassEndToEnd (53.26s)
+2026/11/28 06:39:19 INFO mqtt connected url=ssl://localhost:8883 client=e2e-observer
+    e2e_test.go:197: pass ok: 54 frames (54 locked), file ..\.local\uploads\mission\0c9f5a06-e230-4a89-b86d-2c0bd0f0091f.bin, sla=2 rows, billing=26.7 min
+--- PASS: TestSimulatedPassEndToEnd (39.17s)
 PASS
-ok  	github.com/mini4141/ground-station-cloud/e2e	55.355s
+ok  	github.com/mini4141/ground-station-cloud/e2e	41.201s
 
-DONE 1 tests in 55.355s
+DONE 1 tests in 41.201s

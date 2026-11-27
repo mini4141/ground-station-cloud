@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" time="4.120259">
+	<testsuite tests="1" failures="0" time="4.120000" name="github.com/mini4141/ground-station-cloud/provider" timestamp="2026-11-28T06:39:09+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+		<testcase classname="github.com/mini4141/ground-station-cloud/provider" name="TestAccStation" time="3.710000"></testcase>
+	</testsuite>
+</testsuites>

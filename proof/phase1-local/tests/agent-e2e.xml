@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" time="41.201083">
+	<testsuite tests="1" failures="0" time="41.201000" name="github.com/mini4141/ground-station-cloud/e2e" timestamp="2026-11-28T06:39:17+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+		<testcase classname="github.com/mini4141/ground-station-cloud/e2e" name="TestSimulatedPassEndToEnd" time="39.170000"></testcase>
+	</testsuite>
+</testsuites>

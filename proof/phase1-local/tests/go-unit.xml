@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="5" failures="0" errors="0" time="5.534384">
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/edge/agent" timestamp="2026-11-28T06:38:55+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/edge/sim-modem" timestamp="2026-11-28T06:38:55+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/edge/sim-rotator" timestamp="2026-11-28T06:38:55+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/api" timestamp="2026-11-28T06:38:51+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/auth" timestamp="2026-11-28T06:38:51+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/db" timestamp="2026-11-28T06:38:51+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/db/sqlc" timestamp="2026-11-28T06:38:51+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/events" timestamp="2026-11-28T06:38:52+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="1" failures="0" time="0.976000" name="github.com/mini4141/ground-station-cloud/internal/gs232" timestamp="2026-11-28T06:38:53+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+		<testcase classname="github.com/mini4141/ground-station-cloud/internal/gs232" name="TestRoundTrip" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/ingest" timestamp="2026-11-28T06:38:53+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/iot" timestamp="2026-11-28T06:38:53+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/live" timestamp="2026-11-28T06:38:53+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="1" failures="0" time="1.468000" name="github.com/mini4141/ground-station-cloud/internal/modemproto" timestamp="2026-11-28T06:38:53+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+		<testcase classname="github.com/mini4141/ground-station-cloud/internal/modemproto" name="TestStatusRoundTrip" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/mqtt" timestamp="2026-11-28T06:38:53+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/msg" timestamp="2026-11-28T06:38:53+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="2" failures="0" time="1.710000" name="github.com/mini4141/ground-station-cloud/internal/orbit" timestamp="2026-11-28T06:38:53+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+		<testcase classname="github.com/mini4141/ground-station-cloud/internal/orbit" name="TestPassesTokyoDeterministic" time="0.010000"></testcase>
+		<testcase classname="github.com/mini4141/ground-station-cloud/internal/orbit" name="TestValidateTLERejectsGarbage" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/platform" timestamp="2026-11-28T06:38:53+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="1" failures="0" time="1.810000" name="github.com/mini4141/ground-station-cloud/internal/schedule" timestamp="2026-11-28T06:38:55+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+		<testcase classname="github.com/mini4141/ground-station-cloud/internal/schedule" name="TestConflicts" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/server" timestamp="2026-11-28T06:38:55+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/simclock" timestamp="2026-11-28T06:38:55+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/storage" timestamp="2026-11-28T06:38:55+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/mini4141/ground-station-cloud/internal/wiring" timestamp="2026-11-28T06:38:55+07:00">
+		<properties>
+			<property name="go.version" value="go1.27.4 windows/amd64"></property>
+		</properties>
+	</testsuite>
+</testsuites>

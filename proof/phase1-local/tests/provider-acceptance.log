@@ -1,6 +1,6 @@
 === RUN   TestAccStation
---- PASS: TestAccStation (3.53s)
+--- PASS: TestAccStation (3.71s)
 PASS
-ok  	github.com/mini4141/ground-station-cloud/provider	3.838s
+ok  	github.com/mini4141/ground-station-cloud/provider	4.118s
 
-DONE 1 tests in 3.841s
+DONE 1 tests in 4.120s

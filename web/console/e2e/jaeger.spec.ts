@@ -10,7 +10,7 @@ test("jaeger shows an API trace", async ({ page, request }) => {
   const jaeger = process.env.JAEGER_URL ?? "http://localhost:16686";
   let id = "";
   await expect(async () => {
-    const r = await request.get(`${jaeger}/api/traces?service=api&limit=20&lookback=1h`);
+    const r = await request.get(`${jaeger}/api/traces?service=api&operation=${encodeURIComponent("GET /passes")}&limit=20&lookback=1h`);
     const traces = (await r.json()).data as { traceID: string; spans: unknown[] }[];
     const best = traces?.sort((a, b) => b.spans.length - a.spans.length)[0];
     expect(best).toBeTruthy();

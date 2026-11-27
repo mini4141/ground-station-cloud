@@ -58,12 +58,14 @@ test("book a pass, watch live telemetry, SLA and billing update", async ({ page,
   await expect(page.getByTestId("booking-status").first()).toBeVisible();
   if (!CLOUD) await shot("03-booking");
 
+  // wait for ~60% of the pass (1 frame per real second, simulated time runs x20)
+  const wantFrames = Math.max(8, Math.floor(((new Date(pass.los).getTime() - new Date(pass.aos).getTime()) / 1000 / 20) * 0.6));
   await page.getByRole("link", { name: "Live telemetry" }).click();
   await page.getByTestId("station-tokyo").click();
   await expect(page.getByTestId("tile-lock")).toContainText("LOCKED");
   await expect(async () => {
-    expect(Number(await page.getByTestId("chart-snr").getAttribute("data-points"))).toBeGreaterThanOrEqual(10);
-  }).toPass({ timeout: 60_000 });
+    expect(Number(await page.getByTestId("chart-snr").getAttribute("data-points"))).toBeGreaterThanOrEqual(wantFrames);
+  }).toPass({ timeout: 90_000 });
   await shot(name("04-live-telemetry", "02-cf-live-telemetry"));
 
   await page.getByRole("link", { name: "SLA" }).click();

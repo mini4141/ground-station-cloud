@@ -1,4 +1,4 @@
-PASS internal/server.TestCreateStationComputePassesBook (0.29s)
+PASS internal/server.TestCreateStationComputePassesBook (0.33s)
 PASS internal/server
 
-DONE 1 tests in 0.509s
+DONE 1 tests in 0.604s

@@ -26,4 +26,4 @@ PASS internal/orbit
 PASS internal/schedule.TestConflicts (0.00s)
 PASS internal/schedule
 
-DONE 5 tests in 5.346s
+DONE 5 tests in 5.534s

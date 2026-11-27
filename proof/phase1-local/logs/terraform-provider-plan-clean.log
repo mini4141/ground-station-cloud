@@ -1,0 +1,24 @@
+# terraform plan after apply (custom provider): expect 'No changes'
+
+Warning: Deprecated flag: -state
+
+Use the "path" attribute within the "local" backend to specify a file for
+state storage
+
+Warning: Provider development overrides are in effect
+
+The following provider development overrides are set in the CLI
+configuration:
+ - mini4141/groundstation in C:\Users\ThinkPad\Pictures\mmvie-v2\reqs\16-ground-station-cloud\.local\bin
+
+The behavior may therefore not match any released version of the provider and
+applying changes may cause the state to become incompatible with published
+releases.
+groundstation_station.this["santiago"]: Refreshing state... [id=4a91addc-19cf-4a2d-822a-cea80ab04bef]
+groundstation_station.this["svalbard"]: Refreshing state... [id=045c419b-71fa-4904-b9c7-f8b22fb13ceb]
+groundstation_station.this["tokyo"]: Refreshing state... [id=4ff015ca-b3f3-44e9-afc0-1d14ebf1efbf]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

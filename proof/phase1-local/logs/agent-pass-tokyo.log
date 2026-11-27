@@ -1,0 +1,135 @@
+{"time":"2026-11-27T23:41:38.957405259Z","level":"INFO","msg":"pass plan received","service":"agent","station":"tokyo","booking":"5fcce4da-4db9-46be-99d5-d6f04726cb37","satellite":"ISS (ZARYA)","aos":"2026-11-28T14:35:20.625+07:00","los":"2026-11-28T14:40:09.375+07:00","scale":20}
+{"time":"2026-11-27T23:41:38.958155854Z","level":"INFO","msg":"event","service":"agent","station":"tokyo","type":"plan_ack","booking":"5fcce4da-4db9-46be-99d5-d6f04726cb37"}
+{"time":"2026-11-27T23:41:38.958191659Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W344 005"}
+{"time":"2026-11-27T23:41:38.958241965Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"FREQ 2200000000"}
+{"time":"2026-11-27T23:41:38.95843499Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"FREQ 2200000000"}
+{"time":"2026-11-27T23:41:38.958569707Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W344 005"}
+{"time":"2026-11-27T23:41:38.958604711Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"OK"}
+{"time":"2026-11-27T23:41:38.958621013Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"MODE GMSK9600"}
+{"time":"2026-11-27T23:41:38.958768832Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"MODE GMSK9600"}
+{"time":"2026-11-27T23:41:38.958932553Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"OK"}
+{"time":"2026-11-27T23:41:38.959615839Z","level":"INFO","msg":"event","service":"agent","station":"tokyo","type":"prepositioned","booking":"5fcce4da-4db9-46be-99d5-d6f04726cb37"}
+{"time":"2026-11-27T23:41:53.586016121Z","level":"INFO","msg":"event","service":"agent","station":"tokyo","type":"AOS","booking":"5fcce4da-4db9-46be-99d5-d6f04726cb37"}
+{"time":"2026-11-27T23:41:53.586060227Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"REC START"}
+{"time":"2026-11-27T23:41:53.586209547Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"REC START"}
+{"time":"2026-11-27T23:41:53.586383471Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"OK"}
+{"time":"2026-11-27T23:41:53.586435878Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W344 005"}
+{"time":"2026-11-27T23:41:53.586486885Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:41:53.586730119Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W344 005"}
+{"time":"2026-11-27T23:41:53.586789827Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:41:53.587077366Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=344  EL=005"}
+{"time":"2026-11-27T23:41:53.587131773Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:53.587275693Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:53.587580035Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 4.5 BITRATE 9600"}
+{"time":"2026-11-27T23:41:54.586921275Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W348 006"}
+{"time":"2026-11-27T23:41:54.587020289Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:41:54.58740004Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W348 006"}
+{"time":"2026-11-27T23:41:54.587575664Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:41:54.588002121Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=344  EL=005"}
+{"time":"2026-11-27T23:41:54.588049728Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:54.588255755Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:54.588636107Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 5.4 BITRATE 9600"}
+{"time":"2026-11-27T23:41:55.586716349Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W353 007"}
+{"time":"2026-11-27T23:41:55.58680156Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:41:55.587113902Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W353 007"}
+{"time":"2026-11-27T23:41:55.587152708Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:41:55.587377138Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=348  EL=006"}
+{"time":"2026-11-27T23:41:55.587415343Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:55.587549561Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:55.587804996Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 4.8 BITRATE 9600"}
+{"time":"2026-11-27T23:41:56.587076898Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W358 008"}
+{"time":"2026-11-27T23:41:56.587243321Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:41:56.587847802Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W358 008"}
+{"time":"2026-11-27T23:41:56.587941115Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:41:56.588583802Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=353  EL=007"}
+{"time":"2026-11-27T23:41:56.588684815Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:56.588985156Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:56.589525729Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 4.0 BITRATE 9600"}
+{"time":"2026-11-27T23:41:57.58737804Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W003 008"}
+{"time":"2026-11-27T23:41:57.587691482Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:41:57.588066333Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W003 008"}
+{"time":"2026-11-27T23:41:57.588350171Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:41:57.588804432Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=358  EL=008"}
+{"time":"2026-11-27T23:41:57.588888244Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:57.589120275Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:57.58945532Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 4.8 BITRATE 9600"}
+{"time":"2026-11-27T23:41:58.586614838Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W008 009"}
+{"time":"2026-11-27T23:41:58.586782961Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:41:58.58744655Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W008 009"}
+{"time":"2026-11-27T23:41:58.587705985Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:41:58.588344771Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=298  EL=008"}
+{"time":"2026-11-27T23:41:58.588422282Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:58.588745025Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:58.589167982Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 6.1 BITRATE 9600"}
+{"time":"2026-11-27T23:41:59.586953085Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W013 009"}
+{"time":"2026-11-27T23:41:59.587029395Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:41:59.587251225Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W013 009"}
+{"time":"2026-11-27T23:41:59.58729113Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:41:59.587565167Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=238  EL=009"}
+{"time":"2026-11-27T23:41:59.587597672Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:59.587753593Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:41:59.588014228Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 6.2 BITRATE 9600"}
+{"time":"2026-11-27T23:42:00.586931083Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W019 009"}
+{"time":"2026-11-27T23:42:00.587017094Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:42:00.587370442Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W019 009"}
+{"time":"2026-11-27T23:42:00.58742755Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:42:00.587767996Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=178  EL=009"}
+{"time":"2026-11-27T23:42:00.587819603Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:00.587994026Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:00.588313369Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 4.8 BITRATE 9600"}
+{"time":"2026-11-27T23:42:01.587431251Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W024 009"}
+{"time":"2026-11-27T23:42:01.587657882Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:42:01.587968924Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W024 009"}
+{"time":"2026-11-27T23:42:01.588105442Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:42:01.58846239Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=154  EL=009"}
+{"time":"2026-11-27T23:42:01.588512797Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:01.588712624Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:01.863753227Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 0 SNR 0.5 BITRATE 0"}
+{"time":"2026-11-27T23:42:02.586655196Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W030 009"}
+{"time":"2026-11-27T23:42:02.586772609Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:42:02.587135952Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W030 009"}
+{"time":"2026-11-27T23:42:02.587257466Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:42:02.587588004Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=106  EL=009"}
+{"time":"2026-11-27T23:42:02.587676715Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:02.587903841Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:02.588242081Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 5.9 BITRATE 9600"}
+{"time":"2026-11-27T23:42:03.587037232Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W035 008"}
+{"time":"2026-11-27T23:42:03.587130543Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:42:03.587391974Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W035 008"}
+{"time":"2026-11-27T23:42:03.587494086Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:42:03.587780219Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=046  EL=009"}
+{"time":"2026-11-27T23:42:03.587825824Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:03.588019247Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:03.588399491Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 6.5 BITRATE 9600"}
+{"time":"2026-11-27T23:42:04.587486577Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W040 008"}
+{"time":"2026-11-27T23:42:04.587646295Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:42:04.587934829Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W040 008"}
+{"time":"2026-11-27T23:42:04.587995536Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:42:04.588231864Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=035  EL=008"}
+{"time":"2026-11-27T23:42:04.588278769Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:04.588481793Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:04.588732022Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 5.1 BITRATE 9600"}
+{"time":"2026-11-27T23:42:05.586763085Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W045 007"}
+{"time":"2026-11-27T23:42:05.586866397Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:42:05.587115826Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W045 007"}
+{"time":"2026-11-27T23:42:05.587222538Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:42:05.587586581Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=040  EL=008"}
+{"time":"2026-11-27T23:42:05.587636887Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:05.587842611Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:05.588191751Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 4.2 BITRATE 9600"}
+{"time":"2026-11-27T23:42:06.587398151Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W050 006"}
+{"time":"2026-11-27T23:42:06.587531366Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:42:06.587767694Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W050 006"}
+{"time":"2026-11-27T23:42:06.58790281Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:42:06.588206745Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=045  EL=007"}
+{"time":"2026-11-27T23:42:06.588285554Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:06.588469776Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:06.588837919Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 4.8 BITRATE 9600"}
+{"time":"2026-11-27T23:42:07.586648856Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"W054 005"}
+{"time":"2026-11-27T23:42:07.586783671Z","level":"INFO","msg":"rotator tx","service":"agent","station":"tokyo","bytes":"C2"}
+{"time":"2026-11-27T23:42:07.587150814Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"W054 005"}
+{"time":"2026-11-27T23:42:07.587208321Z","level":"INFO","msg":"rotator sim rx","service":"sim-rotator","bytes":"C2"}
+{"time":"2026-11-27T23:42:07.587669475Z","level":"INFO","msg":"rotator rx","service":"agent","station":"tokyo","bytes":"AZ=050  EL=006"}
+{"time":"2026-11-27T23:42:07.587727781Z","level":"INFO","msg":"modem tx","service":"agent","station":"tokyo","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:07.587918604Z","level":"INFO","msg":"modem sim rx","service":"sim-modem","bytes":"LOCK?"}
+{"time":"2026-11-27T23:42:07.588263344Z","level":"INFO","msg":"modem rx","service":"agent","station":"tokyo","bytes":"LOCK 1 SNR 5.6 BITRATE 9600"}
