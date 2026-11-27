@@ -1,0 +1,32 @@
+image:
+  tag: dev
+  pullPolicy: IfNotPresent
+# Backing services run outside the cluster in the local compose stack; kind nodes reach them through host.docker.internal.
+env:
+  DATABASE_URL: postgres://gs:gs@host.docker.internal:5432/gs?sslmode=disable
+  MQTT_URL: ssl://host.docker.internal:8883
+  MQTT_CA: /certs/ca.crt
+  MQTT_CERT: /certs/cloud.crt
+  MQTT_KEY: /certs/cloud.key
+  MQTT_CLIENT_SUFFIX: -kind
+  JWKS_URL: http://host.docker.internal:9000/.well-known/jwks.json
+  AWS_ENDPOINT_URL_SQS: http://host.docker.internal:9324
+  AWS_ENDPOINT_URL_DYNAMODB: http://host.docker.internal:8000
+  AWS_ACCESS_KEY_ID: local
+  AWS_SECRET_ACCESS_KEY: local
+  AWS_REGION: ap-southeast-2
+  SQS_QUEUE: gs-events-kind
+  LIVE_TABLE: station_live
+  API_PUBLIC_URL: http://host.docker.internal:18080
+  CORS_ORIGIN: "*"
+mqttCertsSecret: gs-mqtt-certs
+services:
+  api:
+    port: 8080
+    env: { HTTP_ADDR: ":8080" }
+  ingest:
+    port: 8091
+    env: { ADMIN_ADDR: ":8091" }
+  scheduler:
+    port: 8092
+    env: { ADMIN_ADDR: ":8092" }

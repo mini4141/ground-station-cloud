@@ -1,0 +1,48 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: web/console/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: web/console/pnpm-lock.yaml
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+      - name: Codegen drift check (oapi-codegen, sqlc, openapi-typescript)
+        run: |
+          go tool oapi-codegen -config api/oapi-codegen.yaml api/openapi.yaml
+          gofmt -w internal/api
+          docker run --rm -v "$PWD:/src" -w /src sqlc/sqlc:1.30.0 generate
+          gofmt -w internal/db/sqlc
+          (cd web/console && pnpm install --frozen-lockfile && pnpm gen:api)
+          git diff --exit-code -- internal/api internal/db/sqlc web/console/src/api || (echo "generated code is stale: run scripts/gen.sh"; exit 1)
+      - name: Build
+        run: go build ./... && (cd web/console && pnpm build)
+      - name: Helm lint
+        run: helm lint deploy/helm/gs-cloud
+      - name: Playwright browser
+        run: (cd web/console && pnpm install --frozen-lockfile && pnpm exec playwright install --with-deps chromium)
+      - name: All cloud-free test layers
+        run: scripts/test-all.sh
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: proof/phase1-local/tests

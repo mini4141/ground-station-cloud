@@ -20,7 +20,7 @@ issue() { # name, CN, extKeyUsage, SAN
   rm -f "$DIR/$name.csr" "$DIR/$name.ext"
 }
 
-issue server mosquitto serverAuth "subjectAltName=DNS:mosquitto,DNS:localhost,IP:127.0.0.1"
+issue server mosquitto serverAuth "subjectAltName=DNS:mosquitto,DNS:localhost,DNS:host.docker.internal,IP:127.0.0.1"
 for id in cloud tokyo svalbard santiago; do issue "$id" "$id" clientAuth "subjectAltName=DNS:$id"; done
 chmod 644 "$DIR"/*.key # containers run as non-root users; these are throwaway local dev keys
 echo "generated CA, broker and client certs (cloud tokyo svalbard santiago) in $DIR"

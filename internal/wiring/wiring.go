@@ -38,7 +38,7 @@ func New(ctx context.Context, clientID string) (*Deps, error) {
 			return nil, err
 		}
 	case "mqtt":
-		d.Pub, err = mqtt.Connect(mqtt.Options{URL: platform.Env("MQTT_URL", "ssl://localhost:8883"), ClientID: clientID,
+		d.Pub, err = mqtt.Connect(mqtt.Options{URL: platform.Env("MQTT_URL", "ssl://localhost:8883"), ClientID: clientID + platform.Env("MQTT_CLIENT_SUFFIX", ""),
 			CA: platform.Env("MQTT_CA", ".local/certs/ca.crt"), Cert: platform.Env("MQTT_CERT", ".local/certs/cloud.crt"), Key: platform.Env("MQTT_KEY", ".local/certs/cloud.key")})
 		if err != nil {
 			return nil, err

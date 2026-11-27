@@ -1,0 +1,1 @@
+{ "apiUrl": "http://localhost:8080", "authMode": "dev", "devOidcUrl": "http://localhost:9000" }

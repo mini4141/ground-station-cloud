@@ -1,0 +1,20 @@
+NAME                               READY   STATUS    RESTARTS   AGE   IP           NODE                     NOMINATED NODE   READINESS GATES
+pod/gs-api-77f8b5cff5-rwhb6        1/1     Running   0          8s    10.244.0.6   gs-local-control-plane   <none>           <none>
+pod/gs-ingest-77b7b849b4-wzzrk     1/1     Running   0          8s    10.244.0.5   gs-local-control-plane   <none>           <none>
+pod/gs-scheduler-5db7c9f6c-fr97m   1/1     Running   0          8s    10.244.0.7   gs-local-control-plane   <none>           <none>
+
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/gs-api         ClusterIP   10.96.1.15      <none>        8080/TCP   8s    app.kubernetes.io/name=gs-api
+service/gs-ingest      ClusterIP   10.96.230.189   <none>        8091/TCP   8s    app.kubernetes.io/name=gs-ingest
+service/gs-scheduler   ClusterIP   10.96.213.56    <none>        8092/TCP   8s    app.kubernetes.io/name=gs-scheduler
+service/kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP    85s   <none>
+
+NAME                           READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES             SELECTOR
+deployment.apps/gs-api         1/1     1            1           8s    api          gs-api:dev         app.kubernetes.io/name=gs-api
+deployment.apps/gs-ingest      1/1     1            1           8s    ingest       gs-ingest:dev      app.kubernetes.io/name=gs-ingest
+deployment.apps/gs-scheduler   1/1     1            1           8s    scheduler    gs-scheduler:dev   app.kubernetes.io/name=gs-scheduler
+
+NAME                                     DESIRED   CURRENT   READY   AGE   CONTAINERS   IMAGES             SELECTOR
+replicaset.apps/gs-api-77f8b5cff5        1         1         1       8s    api          gs-api:dev         app.kubernetes.io/name=gs-api,pod-template-hash=77f8b5cff5
+replicaset.apps/gs-ingest-77b7b849b4     1         1         1       8s    ingest       gs-ingest:dev      app.kubernetes.io/name=gs-ingest,pod-template-hash=77b7b849b4
+replicaset.apps/gs-scheduler-5db7c9f6c   1         1         1       8s    scheduler    gs-scheduler:dev   app.kubernetes.io/name=gs-scheduler,pod-template-hash=5db7c9f6c

@@ -75,7 +75,7 @@ func run(ctx context.Context) error {
 	queueURL := created.QueueUrl
 
 	// bridge: MQTT -> SQS, adding station/kind exactly like the IoT topic rule does
-	_, err = mqtt.Connect(mqtt.Options{URL: platform.Env("MQTT_URL", "ssl://localhost:8883"), ClientID: "cloud-bridge",
+	_, err = mqtt.Connect(mqtt.Options{URL: platform.Env("MQTT_URL", "ssl://localhost:8883"), ClientID: "cloud-bridge" + platform.Env("MQTT_CLIENT_SUFFIX", ""),
 		CA: platform.Env("MQTT_CA", ".local/certs/ca.crt"), Cert: platform.Env("MQTT_CERT", ".local/certs/cloud.crt"), Key: platform.Env("MQTT_KEY", ".local/certs/cloud.key"),
 		OnConnect: func(c *mqtt.Client) {
 			for _, kind := range []string{"telemetry", "status", "events"} {
