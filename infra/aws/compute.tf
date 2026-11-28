@@ -156,10 +156,10 @@ resource "aws_lambda_function" "fn" {
 }
 
 resource "aws_lambda_event_source_mapping" "ingest" {
-  event_source_arn                   = aws_sqs_queue.events.arn
-  function_name                      = aws_lambda_function.fn["ingest"].arn
-  batch_size                         = 10
-  function_response_types            = ["ReportBatchItemFailures"]
+  event_source_arn        = aws_sqs_queue.events.arn
+  function_name           = aws_lambda_function.fn["ingest"].arn
+  batch_size              = 10
+  function_response_types = ["ReportBatchItemFailures"]
   scaling_config {
     maximum_concurrency = 2
   }
