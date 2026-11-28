@@ -1,0 +1,11 @@
+
+Running 1 test using 1 worker
+
+  ok 1 e2e\console.spec.ts:22:1 › book a pass, watch live telemetry, SLA and billing update (2.5m)
+
+  1 passed (2.5m)
+
+To open last HTML report run:
+[36m[39m
+[36m  pnpm exec playwright show-report ..\..\proof\phase2-cloud\tests\playwright-report[39m
+[36m[39m

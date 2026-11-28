@@ -34,7 +34,7 @@ func New(ctx context.Context, clientID string) (*Deps, error) {
 	d := &Deps{Pool: pool, Q: sqlc.New(pool), Events: events.Log{}}
 	switch platform.Env("PUBLISHER", "mqtt") {
 	case "iot":
-		if d.Pub, err = iot.New(ctx, platform.Env("IOT_ENDPOINT", "")); err != nil {
+		if d.Pub, err = iot.New(ctx, platform.Env("IOT_ENDPOINT", ""), platform.Env("IOT_VPCE_HOST", "")); err != nil {
 			return nil, err
 		}
 	case "mqtt":

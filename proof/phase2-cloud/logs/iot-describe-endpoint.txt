@@ -1,0 +1,17 @@
+{
+    "endpointAddress": "a5v2mocod3k2y-ats.iot.ap-southeast-2.amazonaws.com"
+}
+[
+    {
+        "name": "santiago",
+        "project": "ground-station-cloud"
+    },
+    {
+        "name": "svalbard",
+        "project": "ground-station-cloud"
+    },
+    {
+        "name": "tokyo",
+        "project": "ground-station-cloud"
+    }
+]

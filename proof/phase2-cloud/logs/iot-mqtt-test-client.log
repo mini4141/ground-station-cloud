@@ -1,0 +1,8 @@
+# agents (local Docker, X.509 thing certs) connecting and publishing to AWS IoT Core
+{"time":"2026-11-28T01:16:32.525832274Z","level":"INFO","msg":"pass plan received","service":"agent","station":"tokyo","booking":"00dcb8c2-633c-4614-aaab-bfabec6fbed9","satellite":"ISS (ZARYA)","aos":"2026-11-28T09:11:07.5625Z","los":"2026-11-28T09:19:18.8125Z","scale":20}
+{"time":"2026-11-28T01:16:32.9238838Z","level":"INFO","msg":"event","service":"agent","station":"tokyo","type":"plan_ack","booking":"00dcb8c2-633c-4614-aaab-bfabec6fbed9"}
+{"time":"2026-11-28T01:16:33.338299817Z","level":"INFO","msg":"event","service":"agent","station":"tokyo","type":"prepositioned","booking":"00dcb8c2-633c-4614-aaab-bfabec6fbed9"}
+{"time":"2026-11-28T01:16:57.260334397Z","level":"INFO","msg":"event","service":"agent","station":"tokyo","type":"AOS","booking":"00dcb8c2-633c-4614-aaab-bfabec6fbed9"}
+{"time":"2026-11-28T01:17:22.071045117Z","level":"INFO","msg":"event","service":"agent","station":"tokyo","type":"LOS","booking":"00dcb8c2-633c-4614-aaab-bfabec6fbed9"}
+{"time":"2026-11-28T01:17:26.37066128Z","level":"INFO","msg":"mission data uploaded","service":"agent","station":"tokyo","key":"mission/00dcb8c2-633c-4614-aaab-bfabec6fbed9.bin","bytes":28800}
+{"time":"2026-11-28T01:17:26.828925672Z","level":"INFO","msg":"event","service":"agent","station":"tokyo","type":"upload_ok","booking":"00dcb8c2-633c-4614-aaab-bfabec6fbed9"}

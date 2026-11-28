@@ -1,0 +1,6 @@
+START RequestId: cc6b0a2b-6a73-4e54-abe2-9c462ed774f3 Version: $LATEST
+	{"time":"2026-11-28T01:16:32.301319428Z","level":"INFO","msg":"pass plan dispatched","service":"scheduler","booking":"00dcb8c2-633c-4614-aaab-bfabec6fbed9","station":"tokyo","aos":"2026-11-28T09:11:07.5625Z"}
+	END RequestId: cc6b0a2b-6a73-4e54-abe2-9c462ed774f3
+	REPORT RequestId: cc6b0a2b-6a73-4e54-abe2-9c462ed774f3	Duration: 253.49 ms	Billed Duration: 254 ms	Memory Size: 512 MB	Max Memory Used: 77 MB	
+XRAY TraceId: 1-6b0a2b70-13390bf93bf76bb07b941c2e	SegmentId: 212f4d8a5877ebba	Sampled: true	
+

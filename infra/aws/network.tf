@@ -82,6 +82,6 @@ resource "aws_vpc_endpoint" "interface" {
   vpc_endpoint_type   = "Interface"
   subnet_ids          = [aws_subnet.private[0].id]
   security_group_ids  = [aws_security_group.endpoints.id]
-  private_dns_enabled = true
+  private_dns_enabled = each.key != "iot.data" # the IoT data service offers no private DNS name: Lambdas use the endpoint-specific vpce DNS name instead
   tags                = { Name = "${local.name}-${replace(each.key, ".", "-")}" }
 }

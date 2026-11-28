@@ -25,7 +25,7 @@ resource "aws_iot_policy" "station" {
       { Effect = "Allow", Action = "iot:Connect", Resource = "arn:aws:iot:${var.region}:${local.account_id}:client/agent-${each.key}" },
       {
         Effect   = "Allow"
-        Action   = "iot:Publish"
+        Action   = ["iot:Publish", "iot:RetainPublish"] # RetainPublish: retained status heartbeat and last-will
         Resource = [for k in ["telemetry", "status", "events"] : "arn:aws:iot:${var.region}:${local.account_id}:topic/gs/${each.key}/${k}"]
       },
       { Effect = "Allow", Action = "iot:Subscribe", Resource = "arn:aws:iot:${var.region}:${local.account_id}:topicfilter/gs/${each.key}/cmd" },

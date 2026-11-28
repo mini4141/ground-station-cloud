@@ -1,0 +1,128 @@
+# terraform state (resources managed from infra/aws)
+data.aws_availability_zones.az
+data.aws_caller_identity.me
+data.aws_iam_policy_document.events_logs
+data.aws_iam_policy_document.lambda_assume
+data.aws_iam_policy_document.web
+data.aws_iot_endpoint.data
+aws_apigatewayv2_api.api
+aws_apigatewayv2_authorizer.cognito
+aws_apigatewayv2_integration.api
+aws_apigatewayv2_route.public["GET /healthz"]
+aws_apigatewayv2_route.public["OPTIONS /{proxy+}"]
+aws_apigatewayv2_route.public["POST /bookings/{id}/upload-url"]
+aws_apigatewayv2_route.secured
+aws_apigatewayv2_stage.default
+aws_cloudfront_distribution.web
+aws_cloudfront_origin_access_control.web
+aws_cloudwatch_event_rule.domain
+aws_cloudwatch_event_target.domain_logs
+aws_cloudwatch_log_group.domain_events
+aws_cloudwatch_log_group.lambda["api"]
+aws_cloudwatch_log_group.lambda["ingest"]
+aws_cloudwatch_log_group.lambda["scheduler"]
+aws_cloudwatch_log_resource_policy.events
+aws_cognito_user_pool.operators
+aws_cognito_user_pool_client.console
+aws_cognito_user_pool_domain.hosted
+aws_db_subnet_group.db
+aws_dynamodb_table.live
+aws_ecr_repository.svc["api"]
+aws_ecr_repository.svc["ingest"]
+aws_ecr_repository.svc["scheduler"]
+aws_iam_role.iot_rule
+aws_iam_role.lambda["api"]
+aws_iam_role.lambda["ingest"]
+aws_iam_role.lambda["scheduler"]
+aws_iam_role.scheduler
+aws_iam_role_policy.api
+aws_iam_role_policy.ingest
+aws_iam_role_policy.iot_rule
+aws_iam_role_policy.scheduler_fn
+aws_iam_role_policy.scheduler_invoke
+aws_iam_role_policy_attachment.vpc["api"]
+aws_iam_role_policy_attachment.vpc["ingest"]
+aws_iam_role_policy_attachment.vpc["scheduler"]
+aws_iam_role_policy_attachment.xray["api"]
+aws_iam_role_policy_attachment.xray["ingest"]
+aws_iam_role_policy_attachment.xray["scheduler"]
+aws_iot_certificate.station["santiago"]
+aws_iot_certificate.station["svalbard"]
+aws_iot_certificate.station["tokyo"]
+aws_iot_policy.station["santiago"]
+aws_iot_policy.station["svalbard"]
+aws_iot_policy.station["tokyo"]
+aws_iot_policy_attachment.station["santiago"]
+aws_iot_policy_attachment.station["svalbard"]
+aws_iot_policy_attachment.station["tokyo"]
+aws_iot_thing.station["santiago"]
+aws_iot_thing.station["svalbard"]
+aws_iot_thing.station["tokyo"]
+aws_iot_thing_principal_attachment.station["santiago"]
+aws_iot_thing_principal_attachment.station["svalbard"]
+aws_iot_thing_principal_attachment.station["tokyo"]
+aws_iot_topic_rule.ingest
+aws_lambda_event_source_mapping.ingest
+aws_lambda_function.fn["api"]
+aws_lambda_function.fn["ingest"]
+aws_lambda_function.fn["scheduler"]
+aws_lambda_permission.apigw
+aws_rds_cluster.db
+aws_rds_cluster_instance.db
+aws_route_table.private
+aws_route_table_association.private[0]
+aws_route_table_association.private[1]
+aws_s3_bucket.mission
+aws_s3_bucket.web
+aws_s3_bucket_policy.web
+aws_s3_bucket_public_access_block.mission
+aws_s3_bucket_public_access_block.web
+aws_scheduler_schedule_group.passes
+aws_security_group.db
+aws_security_group.endpoints
+aws_security_group.lambda
+aws_sqs_queue.dlq
+aws_sqs_queue.events
+aws_subnet.private[0]
+aws_subnet.private[1]
+aws_vpc.main
+aws_vpc_endpoint.gateway["dynamodb"]
+aws_vpc_endpoint.gateway["s3"]
+aws_vpc_endpoint.interface["events"]
+aws_vpc_endpoint.interface["iot.data"]
+aws_vpc_endpoint.interface["scheduler"]
+aws_vpc_endpoint.interface["sqs"]
+aws_vpc_endpoint.interface["xray"]
+random_id.suffix
+random_password.db
+random_password.upload
+
+# outputs (non-sensitive)
+api_url = "https://4pjkjz9f29.execute-api.ap-southeast-2.amazonaws.com"
+cloudfront_id = "E219GZW07J634M"
+cognito_domain = "gsc-3fe3e4.auth.ap-southeast-2.amazoncognito.com"
+console_url = "https://d8d73h6c1az3o.cloudfront.net"
+db_cluster = "gsc-aurora"
+ecr_repos = {
+  "api" = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/gsc-api"
+  "ingest" = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/gsc-ingest"
+  "scheduler" = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/gsc-scheduler"
+}
+iot_certificate_ids = {
+  "santiago" = "ff209a5f7bc5cde1e9df77c5c8e59117e643ecf27521945a8906ce2d63cefe72"
+  "svalbard" = "cb512f2ec5824a4db2e55acb8e4a0b0d487a1d3808b5147f98e07cf49fed115c"
+  "tokyo" = "02c90efb66cc1430dae68e3d1c0032ebd626c88fd969c19a729607d3d4e9f8f3"
+}
+iot_endpoint = "a5v2mocod3k2y-ats.iot.ap-southeast-2.amazonaws.com"
+lambda_names = {
+  "api" = "gsc-api"
+  "ingest" = "gsc-ingest"
+  "scheduler" = "gsc-scheduler"
+}
+live_table = "gsc-station-live"
+mission_bucket = "gsc-mission-3fe3e4"
+queue_url = "https://sqs.ap-southeast-2.amazonaws.com/<ACCOUNT_ID>/gsc-events"
+schedule_group = "gsc-passes"
+user_pool_client_id = "3d06ej6mesk4aaiorvmip3om7a"
+user_pool_id = "ap-southeast-2_ShX1NqE0t"
+web_bucket = "gsc-console-3fe3e4"

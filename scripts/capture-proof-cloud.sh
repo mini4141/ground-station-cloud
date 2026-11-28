@@ -15,18 +15,10 @@ START_MS=$(( $(date +%s) * 1000 ))
 START_ISO=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 GROUP=$(tfo schedule_group); MISSION=$(tfo mission_bucket); TABLE=$(tfo live_table)
 
-# poll EventBridge schedules while the pass runs: the booking creates a one-time schedule
-( for i in $(seq 1 90); do
-    n=$(aws scheduler list-schedules --group-name "$GROUP" --query 'Schedules[0].Name' --output text 2>/dev/null)
-    if [ -n "$n" ] && [ "$n" != "None" ]; then aws scheduler get-schedule --group-name "$GROUP" --name "$n" | $R > $P/logs/eventbridge-schedule.json; break; fi
-    sleep 2; done ) &
-POLL=$!
-
 echo "== Playwright against CloudFront: book -> live telemetry -> SLA + billing"
-(cd web/console && PHASE=cloud BASE_URL="$CONSOLE_URL" API_URL="$API_URL" TOKEN="$TOKEN" SHOT_DIR="$(wp "$ROOT/$P/screenshots")" \
+(cd web/console && PHASE=cloud FRAME_FRACTION=0.25 MIN_FRAMES=5 CLOCK_LEAD_MIN=45 PW_TEST_TIMEOUT=480000 BASE_URL="$CONSOLE_URL" API_URL="$API_URL" TOKEN="$TOKEN" SHOT_DIR="$(wp "$ROOT/$P/screenshots")" \
   PW_REPORT="$(wp "$ROOT/$P/tests")/playwright-report" PW_JUNIT="$(wp "$ROOT/$P/tests")/playwright-junit.xml" pnpm exec playwright test console.spec.ts 2>&1 | tee "$ROOT/$P/tests/playwright.log")
 PW=${PIPESTATUS[0]}
-wait $POLL 2>/dev/null
 sleep 5
 
 echo "== CLI evidence"
@@ -38,13 +30,14 @@ aws logs filter-log-events --log-group-name /aws/lambda/gsc-ingest --start-time 
 aws logs filter-log-events --log-group-name /aws/lambda/gsc-scheduler --start-time $START_MS --query 'events[].message' --output text 2>/dev/null | head -60 | $R > $P/logs/scheduler-lambda.log
 aws logs filter-log-events --log-group-name /aws/lambda/gsc-api --start-time $START_MS --query 'events[].message' --output text 2>/dev/null | head -80 | $R > $P/logs/api-lambda.log
 aws logs filter-log-events --log-group-name "/aws/events/gsc-domain-events" --start-time $START_MS --query 'events[].message' --output text 2>/dev/null | head -20 | $R > $P/logs/eventbridge-domain-events.log
-[ -s $P/logs/eventbridge-schedule.json ] || aws scheduler list-schedules --group-name "$GROUP" --output json | $R > $P/logs/eventbridge-schedule.json
+LATEST=$(aws scheduler list-schedules --group-name "$GROUP" --query 'sort_by(Schedules,&CreationDate)[-1].Name' --output text)
+aws scheduler get-schedule --group-name "$GROUP" --name "$LATEST" --output json | $R > $P/logs/eventbridge-schedule.json # the one-time schedule created by the newest booking
 aws s3api list-objects-v2 --bucket "$MISSION" --prefix mission/ --output json | $R > $P/logs/s3-mission-object.json
 KEY=$(aws s3api list-objects-v2 --bucket "$MISSION" --prefix mission/ --query 'Contents[0].Key' --output text)
 [ "$KEY" != "None" ] && aws s3api head-object --bucket "$MISSION" --key "$KEY" --output json | $R >> $P/logs/s3-mission-object.json
 aws dynamodb scan --table-name "$TABLE" --output json | $R > $P/logs/dynamodb-station-live.json
 aws sqs get-queue-attributes --queue-url "$(tfo queue_url)" --attribute-names All --query Attributes --output json | $R > $P/logs/sqs-queue-attributes.json
-aws xray get-trace-summaries --start-time "$START_ISO" --end-time "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --output json | $R > $P/logs/xray-trace-summary.json
+aws xray get-trace-summaries --start-time "$START_ISO" --end-time "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --query "{traceCount:length(TraceSummaries),withDbSpans:length(TraceSummaries[?contains(to_string(ServiceIds), 'SELECT')]),sample:TraceSummaries[:8].{id:Id,seconds:Duration,status:Http.HttpStatus,services:ServiceIds[].Name}}" --output json | $R > $P/logs/xray-trace-summary.json
 aws rds describe-db-clusters --db-cluster-identifier "$(tfo db_cluster)" --query 'DBClusters[].{id:DBClusterIdentifier,engine:Engine,version:EngineVersion,mode:EngineMode,scaling:ServerlessV2ScalingConfiguration,status:Status,deletionProtection:DeletionProtection}' --output json | $R > $P/logs/aurora-cluster.json
 aws lambda list-functions --query "Functions[?starts_with(FunctionName,'gsc-')].{name:FunctionName,package:PackageType,memory:MemorySize,vpc:VpcConfig.VpcId,tracing:TracingConfig.Mode}" --output json | $R > $P/logs/lambda-functions.json
 aws ec2 describe-vpc-endpoints --filters Name=tag:Project,Values=ground-station-cloud --query 'VpcEndpoints[].{service:ServiceName,type:VpcEndpointType,state:State}' --output json | $R > $P/logs/vpc-endpoints.json

@@ -1,0 +1,20 @@
+{
+    "ruleArn": "arn:aws:iot:ap-southeast-2:<ACCOUNT_ID>:rule/gsc_ingest",
+    "rule": {
+        "ruleName": "gsc_ingest",
+        "sql": "SELECT *, topic(3) AS kind FROM 'gs/+/+' WHERE topic(3) <> 'cmd'",
+        "description": "",
+        "createdAt": "2026-11-28T06:57:50+07:00",
+        "actions": [
+            {
+                "sqs": {
+                    "roleArn": "arn:aws:iam::<ACCOUNT_ID>:role/gsc-iot-rule",
+                    "queueUrl": "https://sqs.ap-southeast-2.amazonaws.com/<ACCOUNT_ID>/gsc-events",
+                    "useBase64": false
+                }
+            }
+        ],
+        "ruleDisabled": false,
+        "awsIotSqlVersion": "2016-03-23"
+    }
+}

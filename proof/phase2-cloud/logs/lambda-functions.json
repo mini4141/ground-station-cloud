@@ -1,0 +1,23 @@
+[
+    {
+        "name": "gsc-ingest",
+        "package": "Image",
+        "memory": 512,
+        "vpc": "vpc-0a3e56336f6d4f356",
+        "tracing": "Active"
+    },
+    {
+        "name": "gsc-api",
+        "package": "Image",
+        "memory": 512,
+        "vpc": "vpc-0a3e56336f6d4f356",
+        "tracing": "Active"
+    },
+    {
+        "name": "gsc-scheduler",
+        "package": "Image",
+        "memory": 512,
+        "vpc": "vpc-0a3e56336f6d4f356",
+        "tracing": "Active"
+    }
+]

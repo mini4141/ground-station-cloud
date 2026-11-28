@@ -1,0 +1,15 @@
+[
+    {
+        "id": "gsc-aurora",
+        "engine": "aurora-postgresql",
+        "version": "17.6",
+        "mode": "provisioned",
+        "scaling": {
+            "MinCapacity": 0.0,
+            "MaxCapacity": 1.0,
+            "SecondsUntilAutoPause": 300
+        },
+        "status": "available",
+        "deletionProtection": false
+    }
+]

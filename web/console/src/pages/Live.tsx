@@ -25,15 +25,17 @@ export function LivePage() {
     1000,
     [stationId],
   );
+  // DynamoDB keeps the last frame of the previous pass: only a tracking station shows live data
+  const tracking = live?.state === "tracking";
   useEffect(() => {
     const f = live?.frame;
-    if (f && f.t !== lastT.current) {
+    if (tracking && f && f.t !== lastT.current) {
       lastT.current = f.t;
       setFrames((prev) => [...prev.slice(-119), f]);
     }
-  }, [live]);
+  }, [live, tracking]);
 
-  const f = live?.frame;
+  const f = tracking ? live?.frame : undefined;
   const state = live?.state ?? "offline";
   return (
     <>

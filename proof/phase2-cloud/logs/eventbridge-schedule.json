@@ -1,0 +1,23 @@
+{
+    "Arn": "arn:aws:scheduler:ap-southeast-2:<ACCOUNT_ID>:schedule/gsc-passes/pass-00dcb8c2-633c-4614-aaab-bfabec6fbed9",
+    "GroupName": "gsc-passes",
+    "Name": "pass-00dcb8c2-633c-4614-aaab-bfabec6fbed9",
+    "ScheduleExpression": "at(2026-11-28T01:16:26)",
+    "ScheduleExpressionTimezone": "UTC",
+    "State": "ENABLED",
+    "CreationDate": "2026-11-28T08:14:53.681000+07:00",
+    "LastModificationDate": "2026-11-28T08:14:53.681000+07:00",
+    "Target": {
+        "Arn": "arn:aws:lambda:ap-southeast-2:<ACCOUNT_ID>:function:gsc-scheduler",
+        "RoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/gsc-scheduler-invoke",
+        "RetryPolicy": {
+            "MaximumEventAgeInSeconds": 86400,
+            "MaximumRetryAttempts": 185
+        },
+        "Input": "{\"booking_id\":\"00dcb8c2-633c-4614-aaab-bfabec6fbed9\"}"
+    },
+    "FlexibleTimeWindow": {
+        "Mode": "OFF"
+    },
+    "ActionAfterCompletion": "NONE"
+}

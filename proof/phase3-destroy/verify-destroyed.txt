@@ -1,0 +1,23 @@
+# verify-destroyed 2026-11-28T01:42:02Z profile=ground-station-cloud-deployer region=ap-southeast-2
+ok: no IoT things (tokyo svalbard santiago)
+ok: no IoT policies gsc-*
+ok: no IoT topic rules
+ok: no IoT certificates with a gsc policy attached
+ok: no Lambda functions gsc-*
+ok: no API Gateway APIs gsc-api
+ok: no Aurora clusters gsc-*
+ok: no RDS instances gsc-*
+ok: no DynamoDB tables gsc-*
+ok: no SQS queues gsc-*
+ok: no Cognito user pools gsc-*
+ok: no CloudFront distributions (console)
+ok: no EventBridge schedule groups gsc-*
+ok: no EventBridge rules gsc-*
+ok: no S3 buckets gsc-*
+ok: no ECR repositories gsc-*
+ok: no CloudWatch log groups gsc-*
+ok: no VPCs tagged Project=ground-station-cloud
+ok: no VPC endpoints tagged Project
+ok: no IAM roles gsc-*
+ok: tagging API sweep: 9 entries listed, none of them exists (stale index entries are ignored)
+RESULT: PASS - nothing billable tagged Project=ground-station-cloud remains

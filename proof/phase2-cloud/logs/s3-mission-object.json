@@ -1,0 +1,92 @@
+{
+    "Contents": [
+        {
+            "Key": "mission/00dcb8c2-633c-4614-aaab-bfabec6fbed9.bin",
+            "LastModified": "2026-11-28T01:17:27+00:00",
+            "ETag": "\"7990e9e145ebf747ff9a811ae69d4e3c\"",
+            "ChecksumAlgorithm": [
+                "CRC64NVME"
+            ],
+            "ChecksumType": "FULL_OBJECT",
+            "Size": 28800,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "mission/386e2831-5979-46f9-a7d5-25e979326b8f.bin",
+            "LastModified": "2026-11-28T00:43:33+00:00",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "ChecksumAlgorithm": [
+                "CRC64NVME"
+            ],
+            "ChecksumType": "FULL_OBJECT",
+            "Size": 0,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "mission/39225193-92a2-4649-95d8-c18bdb490ac6.bin",
+            "LastModified": "2026-11-28T00:55:38+00:00",
+            "ETag": "\"91302012a9f59be0839fc77be6bb4899\"",
+            "ChecksumAlgorithm": [
+                "CRC64NVME"
+            ],
+            "ChecksumType": "FULL_OBJECT",
+            "Size": 19201,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "mission/77aba5c1-ac3b-4598-8659-b8927f08eb1e.bin",
+            "LastModified": "2026-11-28T01:03:26+00:00",
+            "ETag": "\"aff387ea6b9fbbb31c2686de8ddf4331\"",
+            "ChecksumAlgorithm": [
+                "CRC64NVME"
+            ],
+            "ChecksumType": "FULL_OBJECT",
+            "Size": 12001,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "mission/9904912d-911b-45a6-8574-21ba92813241.bin",
+            "LastModified": "2026-11-28T00:48:58+00:00",
+            "ETag": "\"c0faf91e0ec57684a828c7715a86359b\"",
+            "ChecksumAlgorithm": [
+                "CRC64NVME"
+            ],
+            "ChecksumType": "FULL_OBJECT",
+            "Size": 19202,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "mission/af6ca2ef-9b88-48ed-ab43-e23ebf01bda8.bin",
+            "LastModified": "2026-11-28T01:12:21+00:00",
+            "ETag": "\"ac653b9dbfa3dff5798a7cab9af53707\"",
+            "ChecksumAlgorithm": [
+                "CRC64NVME"
+            ],
+            "ChecksumType": "FULL_OBJECT",
+            "Size": 30001,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "mission/dd0d56a9-56d4-4a71-b70d-a0cd0d5b5c7c.bin",
+            "LastModified": "2026-11-28T01:00:54+00:00",
+            "ETag": "\"6f37d03660f2946c049a6c65bea81a65\"",
+            "ChecksumAlgorithm": [
+                "CRC64NVME"
+            ],
+            "ChecksumType": "FULL_OBJECT",
+            "Size": 16801,
+            "StorageClass": "STANDARD"
+        }
+    ],
+    "RequestCharged": null,
+    "Prefix": "mission/"
+}
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2026-11-28T01:17:27+00:00",
+    "ContentLength": 28800,
+    "ETag": "\"7990e9e145ebf747ff9a811ae69d4e3c\"",
+    "ContentType": "binary/octet-stream",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}

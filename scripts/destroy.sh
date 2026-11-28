@@ -7,7 +7,7 @@ require_identity || { echo "AWS identity check failed" >&2; exit 1; }
 step() { echo; echo "== $*"; }
 
 step "1/6 stop local edge agents"
-docker compose -f local/docker-compose.aws.yml down -v --remove-orphans 2>&1 | tail -3 || true
+IOT_ENDPOINT=unused docker compose -f local/docker-compose.aws.yml down -v --remove-orphans 2>&1 | tail -3 || true
 rm -rf "$CERT_DIR"
 
 if [ ! -f "$TF_AWS_DIR/terraform.tfstate" ] || [ "$(tf state list 2>/dev/null | wc -l)" = "0" ]; then
@@ -53,6 +53,18 @@ else
   done
 
   step "5/6 terraform destroy (infra)"
+  # Lambda leaves detached "available" network interfaces behind that can pin the subnet and security group for a long
+  # time; delete them while terraform destroys (our own VPC only).
+  VPC=$(aws ec2 describe-vpcs --filters Name=tag:Project,Values=ground-station-cloud --query 'Vpcs[0].VpcId' --output text 2>/dev/null)
+  ( while kill -0 $$ 2>/dev/null; do
+      if [ -n "$VPC" ] && [ "$VPC" != "None" ]; then
+        for eni in $(aws ec2 describe-network-interfaces --filters Name=vpc-id,Values="$VPC" Name=status,Values=available --query "NetworkInterfaces[?starts_with(Description,'AWS Lambda VPC ENI')].NetworkInterfaceId" --output text 2>/dev/null); do
+          aws ec2 delete-network-interface --network-interface-id "$eni" >/dev/null 2>&1 && echo "deleted detached Lambda ENI $eni"
+        done
+      fi
+      sleep 20
+    done ) &
+  REAPER=$!
   tf destroy -auto-approve -input=false 2>&1 | tee .local/logs/terraform-aws-destroy.log | tail -15
   if [ "${PIPESTATUS[0]}" != "0" ]; then
     echo "destroy did not finish (network interfaces can lag): retrying once in 2 minutes"
@@ -63,4 +75,5 @@ fi
 
 step "6/6 local leftovers"
 rm -f "$CLOUD_ENV" .local/tfstate/stations-aws.tfstate*
+kill "${REAPER:-0}" 2>/dev/null
 echo "destroy finished: run scripts/verify-destroyed.sh"

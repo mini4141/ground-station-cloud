@@ -1,0 +1,46 @@
+{
+    "Items": [
+        {
+            "heartbeat_at": {
+                "S": "2026-11-28T01:17:54Z"
+            },
+            "state": {
+                "S": "idle"
+            },
+            "station": {
+                "S": "santiago"
+            }
+        },
+        {
+            "heartbeat_at": {
+                "S": "2026-11-28T01:17:57Z"
+            },
+            "state": {
+                "S": "idle"
+            },
+            "station": {
+                "S": "svalbard"
+            }
+        },
+        {
+            "frame": {
+                "S": "{\"schemaVersion\":1,\"station\":\"tokyo\",\"bookingId\":\"00dcb8c2-633c-4614-aaab-bfabec6fbed9\",\"t\":\"2026-11-28T09:19:03.7085547Z\",\"az\":114,\"el\":8,\"snr\":5.6,\"lock\":true,\"bitrate\":9600,\"kind\":\"telemetry\"}"
+            },
+            "heartbeat_at": {
+                "S": "2026-11-28T01:17:56Z"
+            },
+            "state": {
+                "S": "idle"
+            },
+            "station": {
+                "S": "tokyo"
+            },
+            "updated_at": {
+                "S": "2026-11-28T01:17:20Z"
+            }
+        }
+    ],
+    "Count": 3,
+    "ScannedCount": 3,
+    "ConsumedCapacity": null
+}

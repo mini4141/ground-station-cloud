@@ -42,8 +42,24 @@ Logs (`phase1-local/logs/`):
 
 ## Phase 2: AWS
 
-Filled in by `scripts/capture-proof.sh phase2`; see `phase2-cloud/`.
+Captured by `scripts/capture-proof.sh phase2` against the deployed stack (CloudFront console, API Gateway + Lambda, IoT Core with real X.509 thing certificates, SQS, Aurora, DynamoDB, S3). Passes were driven by the same Playwright flow, with local Docker agents connected to IoT Core.
+
+| File | Proves |
+|---|---|
+| [01-cf-passes.png](phase2-cloud/screenshots/01-cf-passes.png) | Console on CloudFront showing SGP4 pass predictions from the Lambda API (Cognito token, JWT authorizer, Aurora) |
+| [02-cf-live-telemetry.png](phase2-cloud/screenshots/02-cf-live-telemetry.png) | Live lock, SNR and elevation during a pass: agent -> IoT Core -> SQS -> ingest Lambda -> DynamoDB -> API |
+| [03-cf-sla.png](phase2-cloud/screenshots/03-cf-sla.png), [04-cf-billing.png](phase2-cloud/screenshots/04-cf-billing.png) | SLA and billing updated after the cloud pass |
+| [05-cw-lambda-invocations.png](phase2-cloud/screenshots/05-cw-lambda-invocations.png) | CloudWatch metric graph rendered from the CLI |
+| [tests/playwright-report](phase2-cloud/tests/playwright-report), [tests/playwright-junit.xml](phase2-cloud/tests/playwright-junit.xml) | Playwright run against the CloudFront URL |
+| [resources.txt](phase2-cloud/resources.txt) | Terraform-managed AWS resources and outputs |
+| [logs/iot-describe-endpoint.txt](phase2-cloud/logs/iot-describe-endpoint.txt), [logs/iot-station-policies.json](phase2-cloud/logs/iot-station-policies.json), [logs/iot-topic-rule.json](phase2-cloud/logs/iot-topic-rule.json) | IoT endpoint and things, per-station policies, topic rule to SQS |
+| [logs/iot-mqtt-test-client.log](phase2-cloud/logs/iot-mqtt-test-client.log) | Agents connecting to IoT Core over mTLS and publishing events |
+| [logs/sqs-ingest-lambda.log](phase2-cloud/logs/sqs-ingest-lambda.log), [logs/scheduler-lambda.log](phase2-cloud/logs/scheduler-lambda.log), [logs/api-lambda.log](phase2-cloud/logs/api-lambda.log) | CloudWatch logs of the three Go Lambdas |
+| [logs/eventbridge-schedule.json](phase2-cloud/logs/eventbridge-schedule.json), [logs/eventbridge-domain-events.log](phase2-cloud/logs/eventbridge-domain-events.log) | One-time pass-reminder schedule created by a booking, and domain events on the bus |
+| [logs/s3-mission-object.json](phase2-cloud/logs/s3-mission-object.json), [logs/dynamodb-station-live.json](phase2-cloud/logs/dynamodb-station-live.json), [logs/sqs-queue-attributes.json](phase2-cloud/logs/sqs-queue-attributes.json) | Mission objects in S3, latest telemetry in DynamoDB, queue state |
+| [logs/xray-trace-summary.json](phase2-cloud/logs/xray-trace-summary.json) | X-Ray traces from the ADOT collector (API spans with SQL child spans) |
+| [logs/aurora-cluster.json](phase2-cloud/logs/aurora-cluster.json), [logs/lambda-functions.json](phase2-cloud/logs/lambda-functions.json), [logs/vpc-endpoints.json](phase2-cloud/logs/vpc-endpoints.json), [logs/cognito-user-pool.json](phase2-cloud/logs/cognito-user-pool.json) | Aurora Serverless v2 scale-to-zero config, container-image Lambdas in the VPC, interface endpoints (no NAT), Cognito pool |
 
 ## Phase 3: destroy
 
-`phase3-destroy/verify-destroyed.txt` is the output of `scripts/verify-destroyed.sh` after `scripts/destroy.sh`.
+[phase3-destroy/verify-destroyed.txt](phase3-destroy/verify-destroyed.txt) is the output of `scripts/verify-destroyed.sh` after `scripts/destroy.sh` (every service checked directly, plus the `Project=ground-station-cloud` tagging sweep). [terraform-destroy-summary.txt](phase3-destroy/terraform-destroy-summary.txt) is the Terraform destroy result.

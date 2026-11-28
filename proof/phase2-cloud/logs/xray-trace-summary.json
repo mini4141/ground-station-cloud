@@ -1,0 +1,91 @@
+{
+    "traceCount": 687,
+    "withDbSpans": 252,
+    "sample": [
+        {
+            "id": "1-6b0a2b7b-fd89a7bdc86902b1119e5b60",
+            "seconds": 0.014,
+            "status": 200,
+            "services": [
+                "api",
+                "api",
+                "SELECT",
+                "pool.acquire"
+            ]
+        },
+        {
+            "id": "1-6b0a2b5b-f0eb21586b36f60d59fda271",
+            "seconds": 0.012,
+            "status": 200,
+            "services": [
+                "api",
+                "api",
+                "SELECT",
+                "pool.acquire"
+            ]
+        },
+        {
+            "id": "1-6b0a2b4f-3dab38071b01c3cb9a515636",
+            "seconds": 0.015,
+            "status": 200,
+            "services": [
+                "api",
+                "api",
+                "SELECT",
+                "pool.acquire"
+            ]
+        },
+        {
+            "id": "1-6b0a2b46-82a53b6981ce4075a8ddd7ee",
+            "seconds": 0.017,
+            "status": 200,
+            "services": [
+                "api",
+                "api",
+                "SELECT",
+                "pool.acquire"
+            ]
+        },
+        {
+            "id": "1-6b0a2b49-7ef68d51ce7e7458c0cf4493",
+            "seconds": 0.015,
+            "status": 200,
+            "services": [
+                "api",
+                "api",
+                "SELECT",
+                "pool.acquire"
+            ]
+        },
+        {
+            "id": "1-6b0a2b70-5bff3d812d84d8170efad151",
+            "seconds": 0.033,
+            "status": 200,
+            "services": [
+                "gsc-api",
+                "gsc-api",
+                "gsc-api"
+            ]
+        },
+        {
+            "id": "1-6b0a2b17-4800d16540bd4647625fdab1",
+            "seconds": 0.068,
+            "status": 200,
+            "services": [
+                "gsc-api",
+                "gsc-api",
+                "gsc-api"
+            ]
+        },
+        {
+            "id": "1-6b0a2b56-3231437a107aa52816318c73",
+            "seconds": 0.034,
+            "status": 200,
+            "services": [
+                "gsc-api",
+                "gsc-api",
+                "gsc-api"
+            ]
+        }
+    ]
+}

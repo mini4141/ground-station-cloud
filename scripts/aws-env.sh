@@ -5,7 +5,7 @@ export AWS_REGION=ap-southeast-2
 export AWS_DEFAULT_REGION=ap-southeast-2
 unset AWS_ENDPOINT_URL_SQS AWS_ENDPOINT_URL_DYNAMODB AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY # local-stack settings from .env.example must not leak
 export AWS_PAGER=""
-TF_AWS_DIR="$ROOT/infra/aws"
+TF_AWS_DIR="$(wp "$ROOT/infra/aws")"
 CERT_DIR="$ROOT/.local/certs/aws"
 CLOUD_ENV="$ROOT/.local/cloud.env"
 

@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="151.41009000000003">
+<testsuite name="console.spec.ts" timestamp="2026-11-28T01:14:35.804Z" hostname="" tests="1" failures="0" skipped="0" time="149.097" errors="0">
+<testcase name="book a pass, watch live telemetry, SLA and billing update" classname="console.spec.ts" time="149.097">
+</testcase>
+</testsuite>
+</testsuites>

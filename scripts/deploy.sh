@@ -36,11 +36,11 @@ COGDOM=$(tfo cognito_domain); IOT=$(tfo iot_endpoint); WEB=$(tfo web_bucket); CF
 
 echo "== 3/8 IoT X.509 certificates -> $CERT_DIR (gitignored)"
 mkdir -p "$CERT_DIR"
-curl -fsS -o "$CERT_DIR/ca.crt" https://www.amazontrust.com/repository/AmazonRootCA1.pem
+curl -fsS -o "$(wp "$CERT_DIR")/ca.crt" https://www.amazontrust.com/repository/AmazonRootCA1.pem
 tfj station_certs | node -e '
 const fs=require("fs");let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{
   const m=JSON.parse(d);for(const [s,v] of Object.entries(m)){
-    fs.writeFileSync(process.argv[1]+"/"+s+".crt",v.cert_pem);fs.writeFileSync(process.argv[1]+"/"+s+".key",v.private_key,{mode:0o644});}})' "$CERT_DIR"
+    fs.writeFileSync(process.argv[1]+"/"+s+".crt",v.cert_pem);fs.writeFileSync(process.argv[1]+"/"+s+".key",v.private_key,{mode:0o644});}})' "$(wp "$CERT_DIR")"
 
 echo "== 4/8 warm the API (runs the DB migrations through the Lambda) + Cognito operator"
 for i in $(seq 1 12); do curl -fsS -m 70 "$API/healthz" >/dev/null && break || sleep 5; done
@@ -52,7 +52,7 @@ TOKEN=$(aws cognito-idp admin-initiate-auth --user-pool-id "$POOL" --client-id "
   --auth-parameters "USERNAME=$USER,PASSWORD=$PASS" --query AuthenticationResult.AccessToken --output text)
 {
   echo "API_URL=$API"; echo "CONSOLE_URL=$CONSOLE"; echo "IOT_ENDPOINT=$IOT"; echo "COGNITO_USER=$USER"; echo "COGNITO_PASSWORD=$PASS"
-  echo "USER_POOL_ID=$POOL"; echo "CLIENT_ID=$CLIENT"
+  echo "USER_POOL_ID=$POOL"; echo "CLIENT_ID=$CLIENT"; echo "IMAGE_TAG=$TAG"
 } > "$CLOUD_ENV"
 curl -fsS -m 70 -H "Authorization: Bearer $TOKEN" "$API/stations" >/dev/null # proves JWT authorizer -> Lambda -> Aurora
 

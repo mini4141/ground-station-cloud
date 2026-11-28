@@ -103,11 +103,13 @@ locals {
     PLAN_LEAD_MIN                       = tostring(var.plan_lead_min)
     PUBLISHER                           = "iot"
     IOT_ENDPOINT                        = data.aws_iot_endpoint.data.endpoint_address
+    IOT_VPCE_HOST                       = aws_vpc_endpoint.interface["iot.data"].dns_entry[0].dns_name
     API_PUBLIC_URL                      = aws_apigatewayv2_api.api.api_endpoint
   }
   fn_env = {
     api = {
       MISSION_BUCKET       = aws_s3_bucket.mission.bucket
+      CORS_ORIGIN          = "https://${aws_cloudfront_distribution.web.domain_name}" # CORS is answered by the Lambda: with a $default JWT route the gateway CORS config cannot answer preflights
       TRUST_GATEWAY_JWT    = "true"
       SCHEDULER_LAMBDA_ARN = local.scheduler_arn
       SCHEDULER_ROLE_ARN   = aws_iam_role.scheduler.arn
@@ -157,7 +159,6 @@ resource "aws_lambda_event_source_mapping" "ingest" {
   event_source_arn                   = aws_sqs_queue.events.arn
   function_name                      = aws_lambda_function.fn["ingest"].arn
   batch_size                         = 10
-  maximum_batching_window_in_seconds = 1
   function_response_types            = ["ReportBatchItemFailures"]
   scaling_config {
     maximum_concurrency = 2
@@ -217,12 +218,6 @@ resource "aws_cloudwatch_event_target" "domain_logs" {
 resource "aws_apigatewayv2_api" "api" {
   name          = "${local.name}-api"
   protocol_type = "HTTP"
-  cors_configuration {
-    allow_origins = ["https://${aws_cloudfront_distribution.web.domain_name}", "http://localhost:5173"]
-    allow_methods = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
-    allow_headers = ["authorization", "content-type", "x-upload-token"]
-    max_age       = 3600
-  }
 }
 
 resource "aws_apigatewayv2_integration" "api" {
@@ -253,7 +248,7 @@ resource "aws_apigatewayv2_route" "secured" {
 }
 
 resource "aws_apigatewayv2_route" "public" {
-  for_each           = toset(["GET /healthz", "POST /bookings/{id}/upload-url"])
+  for_each           = toset(["GET /healthz", "POST /bookings/{id}/upload-url", "OPTIONS /{proxy+}"]) # OPTIONS: CORS preflight must bypass the JWT authorizer
   api_id             = aws_apigatewayv2_api.api.id
   route_key          = each.key
   target             = "integrations/${aws_apigatewayv2_integration.api.id}"
